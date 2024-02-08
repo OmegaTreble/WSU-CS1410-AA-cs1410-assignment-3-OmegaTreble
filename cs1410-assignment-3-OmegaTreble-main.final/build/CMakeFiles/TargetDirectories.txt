@@ -1,3 +1,0 @@
-/mnt/c/Users/OmegaTreble/OneDrive/Weber S###/CS1410/cs1410-assignment-3-OmegaTreble-main/build/CMakeFiles/main.dir
-/mnt/c/Users/OmegaTreble/OneDrive/Weber S###/CS1410/cs1410-assignment-3-OmegaTreble-main/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/OmegaTreble/OneDrive/Weber S###/CS1410/cs1410-assignment-3-OmegaTreble-main/build/CMakeFiles/rebuild_cache.dir
