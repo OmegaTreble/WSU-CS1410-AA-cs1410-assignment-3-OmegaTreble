@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I"/mnt/c/Users/OmegaTreble/OneDrive/Weber S\#\#\#/CS1410/cs1410-assignment-3-OmegaTreble-main/include"
+CXX_INCLUDES = -I"/mnt/c/Users/OmegaTreble/OneDrive/Weber S\#\#\#/CS1410/cs1410-assignment-5-OmegaTreble-main/include"
 
 CXX_FLAGS = -std=gnu++17
 

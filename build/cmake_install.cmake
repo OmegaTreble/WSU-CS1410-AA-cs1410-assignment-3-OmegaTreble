@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/c/Users/OmegaTreble/OneDrive/Weber S###/CS1410/cs1410-assignment-3-OmegaTreble-main
+# Install script for directory: /mnt/c/Users/OmegaTreble/OneDrive/Weber S###/CS1410/cs1410-assignment-5-OmegaTreble-main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/c/Users/OmegaTreble/OneDrive/Weber S###/CS1410/cs1410-assignment-3-OmegaTreble-main/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/c/Users/OmegaTreble/OneDrive/Weber S###/CS1410/cs1410-assignment-5-OmegaTreble-main/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
