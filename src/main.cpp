@@ -1,94 +1,106 @@
+// CS1410 - Assignment 03 - Du Mars
 #include <iostream>
-#include <iomanip>
+#include <iomanip>  
 #include <cmath>
 using namespace std;
 
-struct Item{
-  double value;
-  Item* next;
+//TODO 1: ShapeKind Enumeration goes here
+enum class ShapeKind {CIRCLE, RECTANGLE, SQUARE};
+//TODO 2: Shape Structure goes here
+struct Shape {
+  ShapeKind kind;
+  int length;
+  int width;
 };
 
-struct Stack{
-  Item* top;
-  int size;
-};
+// Function prototypes and definitions
+double area(Shape s);
+//TODO 3: area() definition goes here
+double area(Shape s) {
+  if (s.kind == ShapeKind::CIRCLE) {
+    double radius = s.length / 2;
+    double area = ((radius * radius) * 3.14);
+    return area;
+  }
+  else if (s.kind == ShapeKind::RECTANGLE) {
+    double area = s.length * s.width;
+    return area;
+  }
+  else if (s.kind == ShapeKind::SQUARE) {
+    double area = s.length * s.length;
+    return area;
+  }
+  else {return 0;}
+}
 
-void push(Stack* stack, double num){
-  Item* item = new Item;
-  item->value = num;
-  item->next = stack->top;
-  stack->size++;
-  };
-double top(Stack* stack){
-  if (stack->top != nullptr){
-    double topvalue = stack->top->value;
-    return topvalue;
+double perimeter(Shape s);
+//TODO 4: perimeter() definition goes here
+double perimeter(Shape s) {
+  if (s.kind == ShapeKind::CIRCLE) {
+    double perimeter = s.length * 3.14;
+    return perimeter;
+  }
+  if (s.kind == ShapeKind::RECTANGLE) {
+    double perimeter = (s.length * 2) + (s.width * 2);
+    return perimeter;
+  }
+  if (s.kind == ShapeKind::SQUARE) {
+    double perimeter = 4 * s.length;
+    return perimeter;
   }
   else {
-    return HUGE_VAL;
+    return 0;
   }
-};
-void pop(Stack* stack){
-  if (stack->top == nullptr){
-    cout << "List is empty. Can not delete an empty value." << endl;
-  }
-  else{
-    Item* temp;
-    temp = stack->top;
-    stack->top=temp->next;
-    delete temp;
-    stack->size--;
-  }
-};
-void print(Stack* stack){
-  int i =1;
-  cout << setw(20) << "-------------" << endl;
-  while(stack->top != nullptr){
-    if (i=1){
-      cout << setw(30) << stack->top->value << setw(2) <<  "< TOP" << endl;
-      stack->top = stack->top->next;
-      i=2;
-    };
-    cout << setw(30) << stack->top->value << endl;
-    stack->top = stack->top->next;
-  }
-  cout << setw(20) << "-------------" << endl;
-  cout << setw(34) << stack->size << " Items" << endl;
-};
+}
 
-int main(){
-  int width;
-  int i=0;
-  double input;
-  Stack* list = {0};
-  cout << "Please enter the size of the list:  ";
-  cin >> width;
-  while (i < width) {
-    cout << "Please enter the value" << endl;
-    cin >> input;
-    push(list, input);
-    i++;
+string nameOf(Shape s);
+//TODO 5: nameOf() definition goes here
+string nameOf(Shape s) {
+  switch(s.kind){
+    case ShapeKind::CIRCLE: return "Circle";
+    case ShapeKind::RECTANGLE: return "Rectangle";
+    case ShapeKind::SQUARE: return "Square";
   }
-  char pp = 'P';
-  char prt = 'r';
-  char tp = 't';
-  char quit = 'q';
-  char value;
-  while (value != quit){
-    cout << "Enter p to pop the top value out of the list." << endl;
-    cout << "Enter r to print the entire list." << endl;
-    cout << "Enter t to print the top value." << endl;
-    cout << "enter q to quit." << endl;
-    if (value == pp){
-      pop(list);
-    }
-    else if (value == prt){
-      print(list);
-    }
-    else if (value == tp){
-      double topvalue=top(list);
-      cout << "The top value is " << topvalue << endl;
-    }
+  return 0;
+}
+
+void promptAndReadInputFor(Shape& s);
+//TODO 6: promptAndReadInputFor() definition goes here
+void promptAndReadInputFor(Shape& s){
+  if (s.kind == ShapeKind::CIRCLE) {
+    cout << "What is the diameter of the circle: ";
+    cin >> s.length;
+    s.width=s.length;
   }
+  if (s.kind == ShapeKind::SQUARE) {
+    cout << "What is the length of the square:  ";
+    cin >> s.length;
+    s.width=s.length;
+  }
+  if (s.kind == ShapeKind::RECTANGLE) {
+    cout << "What is the length and the width of the rectangle:  ";
+    cin >> s.length >> s.width;
+  }
+}
+
+// The main function
+int main() {
+  // Shape objects
+  Shape CIRCLE = {ShapeKind::CIRCLE, 0, 0};
+  //TODO 7: define two more shape objects: a square and and a rectangle 
+  Shape RECTANGLE = {ShapeKind::RECTANGLE, 0, 0};
+  Shape SQUARE = {ShapeKind::SQUARE, 0, 0};
+
+  //TODO 8: Call the promptAndReadInputFor() function on each of the above three shapes
+  promptAndReadInputFor(CIRCLE);
+  promptAndReadInputFor(SQUARE);
+  promptAndReadInputFor(RECTANGLE);
+  
+  //TODO 9: Print a out a report of these shapes in a table-like format
+  cout << setw(10) << "Shape" << setw(10) << "Width" << setw(10) << "Length" << setw(10) << "Perimeter" << setw(10) << "Area" << endl;
+  cout << "---------------------------------------------------------------------------" << endl;
+  cout << setw(10) << nameOf(CIRCLE) << setw(10) << CIRCLE.width << setw(10) << CIRCLE.length << setw(10) << perimeter(CIRCLE) << setw(10) << area(CIRCLE) << endl;
+  cout << setw(10) << nameOf(SQUARE) << setw(10) << SQUARE.width << setw(10) << SQUARE.length << setw(10) << perimeter(SQUARE) << setw(10) << area(SQUARE) << endl;
+  cout << setw(10) << nameOf(RECTANGLE) << setw(10) << RECTANGLE.width << setw(10) << RECTANGLE.length << setw(10) << perimeter(RECTANGLE) << setw(10) << area(RECTANGLE) << endl;
   return 0;
 }
